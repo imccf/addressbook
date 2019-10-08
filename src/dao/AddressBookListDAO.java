@@ -11,7 +11,7 @@ public interface AddressBookListDAO {
 
 	public void printSpecificContactsByContact(ContactEntry entry);
 
-	public void printSpecificContactsByOccupation(String occupation);
+	public void printUniqueAllContacts(int index);
 
-	public void printSpecificContactsByCompany(String company);
+	public void printUniqueAllContactsByID(String id);
 }

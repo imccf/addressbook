@@ -10,3 +10,10 @@
 4.MVC Architecture
 
 5.Because UI is not required, I don't use Android Studio and MVP pattern to do it
+
+6.For "get a unique contact" feature, user can call printUniqueAllContacts(int index) function to get data,
+  the param index is similar with "Index" of a database. so We can print same unique contact across multiple address books.
+
+7.For "get a unique contact" feature, user also can call printUniqueAllContactsByID(String id) function to get data,
+  the param id is same as unique ID, so We can print same unique contact across multiple address books with same ID.
+

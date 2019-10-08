@@ -5,6 +5,15 @@ public class ContactEntry {
 	private String phoneNum; // The Contract's phone number
 	private String company; // The Contract's company
 	private String occupation; // The Contract's occupation
+	private String ID; // The Contract's unique ID
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
 
 	public String getName() {
 		return name;

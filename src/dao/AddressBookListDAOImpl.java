@@ -27,7 +27,7 @@ public class AddressBookListDAOImpl implements AddressBookListDAO {
 	}
 
 	/**
-	 * @Discretion £ºUsed to add a address book to a address book list
+	 * @Description £ºUsed to add a address book to a address book list
 	 * @Params £º@param AddressBookDAOImpl addressBook
 	 * @return £ºvoid
 	 **/
@@ -37,8 +37,8 @@ public class AddressBookListDAOImpl implements AddressBookListDAO {
 	}
 
 	/**
-	 * @Discretion £ºUsed to print a specified contact information across multiple
-	 *             address
+	 * @Description £ºUsed to print a specified contact information across
+	 *              multiple address
 	 * @Params £º@param ContactEntry entry
 	 * @return £ºvoid
 	 **/
@@ -59,50 +59,8 @@ public class AddressBookListDAOImpl implements AddressBookListDAO {
 	}
 
 	/**
-	 * @Discretion £ºUsed to print a unique set of all contacts across multiple
-	 *             address books(by occupation)
-	 * @Params £º@param String company
-	 * @return £ºvoid
-	 **/
-	@Override
-	public void printSpecificContactsByOccupation(String occupation) {
-		// TODO Auto-generated method stub
-		if (addressBookList != null) {
-			for (AddressBookDAOImpl addressBook : addressBookList) {
-				List<ContactEntry> ContactEntryList = addressBook.getAddressBook();
-				for (ContactEntry contactEntry : ContactEntryList) {
-					if (contactEntry.getOccupation().equals(occupation)) {
-						Util.printContactInfo(contactEntry);
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * @Discretion £ºUsed to print a unique set of all contacts across multiple
-	 *             address books(by company)
-	 * @Params £º@param String company
-	 * @return £ºvoid
-	 **/
-	@Override
-	public void printSpecificContactsByCompany(String company) {
-		// TODO Auto-generated method stub
-		if (addressBookList != null) {
-			for (AddressBookDAOImpl addressBook : addressBookList) {
-				List<ContactEntry> ContactEntryList = addressBook.getAddressBook();
-				for (ContactEntry contactEntry : ContactEntryList) {
-					if (contactEntry.getCompany().equals(company)) {
-						Util.printContactInfo(contactEntry);
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * @Discretion £ºUsed to judge whether user maintain multiple address book or
-	 *             not, if yes, return true, or else return false
+	 * @Description £ºUsed to judge whether user maintain multiple address book
+	 *              or not, if yes, return true, or else return false
 	 * @Params £º@param AddressBookListDAOImpl addressBookList
 	 * @return £ºboolean
 	 **/
@@ -113,6 +71,48 @@ public class AddressBookListDAOImpl implements AddressBookListDAO {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	/**
+	 * @Description £ºUsed to print a unique set of all contacts across multiple
+	 *              address books(by same index)
+	 * @Params £º@param int index
+	 * @return £ºvoid
+	 **/
+	@Override
+	public void printUniqueAllContacts(int index) {
+		// TODO Auto-generated method stub
+		if (addressBookList != null) {
+			for (AddressBookDAOImpl addressBook : addressBookList) {
+				List<ContactEntry> ContactEntryList = addressBook.getAddressBook();
+				if (0 <= index && index < ContactEntryList.size()) {
+					Util.printContactInfo(ContactEntryList.get(index));
+				} else {
+					Util.printError("Nothing to print, because of out of index");
+				}
+			}
+		}
+	}
+
+	/**
+	 * @Description £ºUsed to print a unique set of all contacts across multiple
+	 *              address books(by same ID)
+	 * @Params £º@param String id
+	 * @return £ºvoid
+	 **/
+	@Override
+	public void printUniqueAllContactsByID(String id) {
+		// TODO Auto-generated method stub
+		if (addressBookList != null) {
+			for (AddressBookDAOImpl addressBook : addressBookList) {
+				List<ContactEntry> contactEntryList = addressBook.getAddressBook();
+				for (ContactEntry contactEntry : contactEntryList) {
+					if (contactEntry.getID().equals(id)) {
+						Util.printContactInfo(contactEntry);
+					}
+				}
+			}
 		}
 	}
 }
